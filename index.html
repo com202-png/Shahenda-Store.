@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="htmlRoot">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shahenda Store | متجر عطور</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="app-bar">
+      <button class="icon-button menu-button" aria-label="Menu">☰</button>
+      <div class="brand-block">
+        <span class="brand-mark">ش</span>
+        <div class="brand-copy">
+          <span class="brand-name">Shahenda Store</span>
+          <span class="brand-tag" data-en="Perfume Store">متجر العطور المختار</span>
+        </div>
+      </div>
+      <div class="app-actions">
+        <button class="icon-button language-toggle" id="languageToggle" aria-label="Toggle Language">EN</button>
+        <button class="icon-button" aria-label="Search">🔍</button>
+        <button class="icon-button cart-button" aria-label="Cart">🛒<span id="cartCount">0</span></button>
+      </div>
+    </header>
+
+    <main class="products-section">
+      <section class="offers-section">
+        <div class="offer-card premium">
+          <h3 data-ar="عرض خاص: بوكس 10 قطع 30 مل" data-en="Special Offer: Box of 10 Pieces 30ml">عرض خاص: بوكس 10 قطع 30 مل</h3>
+          <p data-ar="احصل على بوكس يحتوي على 10 قطع عطر 30 مل بسعر 1500 جنيه بدلاً من 3000 جنيه!" data-en="Get a box with 10 perfume pieces of 30ml for 1500 EGP instead of 3000 EGP!">احصل على بوكس يحتوي على 10 قطع عطر 30 مل بسعر 1500 جنيه بدلاً من 3000 جنيه!</p>
+          <button id="selectOffer" class="button button-primary" data-ar="اختر العرض" data-en="Choose Offer">اختر العرض</button>
+        </div>
+        <div id="offerOptions" class="offer-options" style="display: none;">
+          <h4 data-ar="اختر 10 عطور من القائمة أدناه:" data-en="Select 10 perfumes from the list below:">اختر 10 عطور من القائمة أدناه:</h4>
+          <div id="perfumeSelector" class="perfume-selector"></div>
+          <button id="addToCartOffer" class="button button-primary" data-ar="أضف إلى السلة" data-en="Add to Cart">أضف إلى السلة</button>
+        </div>
+      </section>
+
+      <section class="customize-section">
+        <div class="customize-card premium">
+          <h3 data-ar="كوستومايز عطرك الخاص" data-en="Customize Your Own Perfume">كوستومايز عطرك الخاص</h3>
+          <p data-ar="اكتب وصف العطر الذي تريده، وسنقوم بتصميمه خصيصاً لك." data-en="Describe your desired perfume, and we will design it exclusively for you.">اكتب وصف العطر الذي تريده، وسنقوم بتصميمه خصيصاً لك.</p>
+          <p class="price-note">Price will be determined after the order.</p>
+          <textarea id="customDescription" placeholder="اكتب وصف العطر المطلوب، مثل الروائح، القوة، التركيبة، إلخ." data-placeholder-en="Describe your desired perfume..."></textarea>
+          <button id="submitCustom" class="button button-primary" data-ar="إرسال الطلب" data-en="Submit Order">إرسال الطلب</button>
+        </div>
+      </section>
+
+      <div class="section-header">
+        <h2>تسوّق العطور المختارة</h2>
+        <p>أفضل العروض وأشهر الماركات في مكان واحد.</p>
+      </div>
+      <div class="product-grid" id="productGrid"></div>
+
+      <section class="order-section" id="orderSection">
+        <div class="section-heading">
+          <h3 data-ar="تفاصيل الطلب" data-en="Order Details">تفاصيل الطلب</h3>
+          <p data-ar="اختر الحجم، نوع العبوة، الكمية، وأرسل الطلب مباشرة." data-en="Choose size, bottle type, quantity, and submit your order.">اختر الحجم، نوع العبوة، الكمية، وأرسل الطلب مباشرة.</p>
+        </div>
+        
+        <div id="cartReview" class="cart-review" style="display:none;">
+          <h4 data-ar="ملخص السلة:" data-en="Cart Summary:">ملخص السلة:</h4>
+          <div id="cartItems" class="cart-items"></div>
+          <div class="cart-summary">
+            <div class="summary-row"><span data-ar="الإجمالي:" data-en="Total:">الإجمالي:</span><span id="cartTotal">0 EGP</span></div>
+          </div>
+          <button id="proceedToCheckout" class="button button-primary" data-ar="تأكيد المحتويات والمتابعة" data-en="Confirm & Proceed">تأكيد المحتويات والمتابعة</button>
+        </div>
+
+        <div class="order-panel" id="orderPanel">
+          <div class="order-top">
+            <div class="order-image" id="orderProductImage">ع</div>
+            <div class="order-info">
+              <p class="order-brand" id="orderBrand" data-ar-default="اختر منتج" data-en-default="Choose a product">اختر منتج</p>
+              <h3 id="orderName" data-ar-default="لم يتم اختيار أي منتج بعد" data-en-default="No product selected">لم يتم اختيار أي منتج بعد</h3>
+            </div>
+          </div>
+
+          <div class="order-fields">
+            <label data-ar="الحجم" data-en="Size">
+              الحجم
+              <select id="sizeSelect"></select>
+            </label>
+            <label data-ar="نوع العبوة" data-en="Bottle Type">
+              نوع العبوة
+              <select id="bottleSelect">
+                <option value="Automatic" data-en="Automatic">Automatic Bottle</option>
+                <option value="Refill" data-en="Refill">Refill</option>
+              </select>
+            </label>
+            <label data-ar="الكمية" data-en="Quantity">
+              الكمية
+              <input id="quantityInput" type="number" min="1" value="1" />
+            </label>
+            <label data-ar="كود الخصم" data-en="Promo Code">
+              كود الخصم
+              <input id="promoInput" type="text" placeholder="أدخل الكود" data-placeholder-en="Enter code" />
+            </label>
+          </div>
+
+          <div class="summary-card">
+            <div class="summary-row"><span data-ar="السعر" data-en="Price">السعر</span><span id="subtotalValue">0 EGP</span></div>
+            <div class="summary-row"><span data-ar="الخصم" data-en="Discount">الخصم</span><span id="discountValue">0 EGP</span></div>
+            <div class="summary-row total-row"><span data-ar="الإجمالي" data-en="Total">الإجمالي</span><span id="totalValue">0 EGP</span></div>
+          </div>
+
+          <div class="customer-fields">
+            <label data-ar="الاسم الكامل" data-en="Full Name">
+              الاسم الكامل
+              <input id="customerName" type="text" placeholder="الاسم" data-placeholder-en="Your name" />
+            </label>
+            <label data-ar="البريد الإلكتروني" data-en="Email">
+              البريد الإلكتروني
+              <input id="customerEmail" type="email" placeholder="example@mail.com" />
+            </label>
+            <label data-ar="رقم الهاتف" data-en="Phone">
+              رقم الهاتف
+              <input id="customerPhone" type="tel" placeholder="0100xxxxxxx" data-placeholder-en="+201xxxxxxxxx" />
+            </label>
+          </div>
+
+          <button id="submitOrder" class="button button-primary" data-ar="تأكيد الطلب" data-en="Confirm Order">تأكيد الطلب</button>
+          <div id="orderStatus" class="order-status"></div>
+        </div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav">
+      <button class="nav-item active"><span>🏬</span><span>Shop</span></button>
+      <button class="nav-item"><span>♡</span><span>Wishlist</span></button>
+      <button class="nav-item"><span>🛒</span><span>Cart</span></button>
+      <button class="nav-item"><span>👤</span><span>Account</span></button>
+      <button class="nav-item"><span>🔍</span><span>Search</span></button>
+    </nav>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js" defer></script>
+  <script src="script.js" defer></script>
+</body>
+</html>
