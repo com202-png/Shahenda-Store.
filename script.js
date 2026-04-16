@@ -1,8 +1,12 @@
+const SUPABASE_URL = 'https://aweuqtiqfxjoflvvturi.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_DIHyv13-yCxgBKIC8PYCvQ_394bcWSE';
+const supabaseClient = typeof supabase !== 'undefined' && supabase.createClient ? supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
+
 const sizeOptions = ['30ml', '50ml', '100ml'];
 
 const products = [
-  { id: 1, name: 'Black XS', brand: 'Paco Rabanne', category: 'Men / Unisex', image_url: 'https://69e170f2922d70dc1fa0c31b.imgix.net/Gemini_Generated_Image_r4bpjgr4bpjgr4bp.png', prices: { '30ml': 300, '50ml': 400, '100ml': 600 }, discount: 10, rating: 4.6, volume: '100ml' },
-  { id: 2, name: 'Black XS L’Exces', brand: 'Paco Rabanne', category: 'Men / Unisex', image_url: 'https://69e170f2922d70dc1fa0c31b.imgix.net/Gemini_Generated_Image_r4bpjgr4bpjgr4bp.png', prices: { '30ml': 300, '50ml': 400, '100ml': 600 }, discount: 10, rating: 4.5, volume: '100ml' },
+  { id: 1, name: 'Black XS', brand: 'Paco Rabanne', category: 'Men / Unisex', image_url: 'https://images.unsplash.com/seed/black-xs/600x600?auto=format&fit=crop&w=600&q=80', prices: { '30ml': 300, '50ml': 400, '100ml': 600 }, discount: 10, rating: 4.6, volume: '100ml' },
+  { id: 2, name: 'Black XS L’Exces', brand: 'Paco Rabanne', category: 'Men / Unisex', image_url: 'https://images.unsplash.com/seed/black-xs-lexces/600x600?auto=format&fit=crop&w=600&q=80', prices: { '30ml': 300, '50ml': 400, '100ml': 600 }, discount: 10, rating: 4.5, volume: '100ml' },
   { id: 3, name: 'Chrome', brand: 'Azzaro', category: 'Men / Unisex', image_url: 'https://images.unsplash.com/seed/chrome-azzaro/600x600?auto=format&fit=crop&w=600&q=80', prices: { '30ml': 300, '50ml': 400, '100ml': 600 }, discount: 5, rating: 4.4, volume: '100ml' },
   { id: 4, name: 'Asad', brand: 'Lattafa', category: 'Men / Unisex', image_url: 'https://images.unsplash.com/seed/asad-lattafa/600x600?auto=format&fit=crop&w=600&q=80', prices: { '30ml': 350, '50ml': 450, '100ml': 650 }, discount: 0, rating: 4.7, volume: '100ml' },
   { id: 5, name: 'Sauvage', brand: 'Dior', category: 'Men / Unisex', image_url: 'https://images.unsplash.com/seed/sauvage-dior/600x600?auto=format&fit=crop&w=600&q=80', prices: { '30ml': 300, '50ml': 400, '100ml': 600 }, discount: 10, rating: 4.8, volume: '100ml' },
@@ -234,7 +238,7 @@ function submitCustomOrder() {
   customDescription.value = '';
 }
 
-function submitOrderHandler() {
+async function submitOrderHandler() {
   if (!selectedProductId) {
     orderStatus.textContent = 'اختر منتجاً أولاً.';
     orderStatus.className = 'order-status error';
@@ -261,8 +265,37 @@ function submitOrderHandler() {
     return;
   }
 
-  orderStatus.textContent = `تم تقديم الطلب لـ ${product.brand} ${product.name}. المبلغ الكلي ${formatPrice(total)}.`;
-  orderStatus.className = 'order-status success';
+  const orderPayload = {
+    product_name: product.name,
+    brand: product.brand,
+    size,
+    bottle_type: bottleSelect.value,
+    quantity,
+    unit_price: unitPrice,
+    subtotal,
+    promo_code: promoCode || null,
+    discount_amount: discountAmount,
+    total,
+    customer_name: customer.name,
+    customer_email: customer.email,
+    customer_phone: customer.phone || null,
+  };
+
+  if (supabaseClient) {
+    const { error } = await supabaseClient.from('orders').insert([orderPayload]);
+    if (error) {
+      console.error('Supabase order insert error:', error);
+      orderStatus.textContent = 'خطأ في حفظ الطلب في قاعدة البيانات. تم حفظ الطلب محلياً فقط.';
+      orderStatus.className = 'order-status error';
+    } else {
+      orderStatus.textContent = `تم حفظ الطلب في قاعدة البيانات. المبلغ الكلي ${formatPrice(total)}.`;
+      orderStatus.className = 'order-status success';
+    }
+  } else {
+    orderStatus.textContent = `تم تقديم الطلب محلياً. المبلغ الكلي ${formatPrice(total)}.`;
+    orderStatus.className = 'order-status success';
+  }
+
   customerName.value = '';
   customerEmail.value = '';
   customerPhone.value = '';
