@@ -5,13 +5,13 @@ const supabaseClient = typeof supabase !== 'undefined' && supabase.createClient 
 const sizeOptions = ['30ml', '50ml', '100ml'];
 
 const products = [
-  { id: 1, name: 'Black XS', brand: 'Paco Rabanne', category: 'Men / Unisex', image_url: 'https://69e170f2922d70dc1fa0c31b.imgix.net/Gemini_Generated_Image_r4bpjgr4bpjgr4bp.png', prices: { '30ml': 300, '50ml': 400, '100ml': 600 }, discount: 10, rating: 4.6, volume: '100ml' },
-  { id: 2, name: 'Black XS L’Exces', brand: 'Paco Rabanne', category: 'Men / Unisex', image_url: 'https://69e170f2922d70dc1fa0c31b.imgix.net/Gemini_Generated_Image_r4bpjgr4bpjgr4bp.png', prices: { '30ml': 300, '50ml': 400, '100ml': 600 }, discount: 10, rating: 4.5, volume: '100ml' },
-  { id: 3, name: 'Chrome', brand: 'Azzaro', category: 'Men / Unisex', image_url: 'https://69e170f2922d70dc1fa0c31b.imgix.net/Gemini_Generated_Image_r4bpjgr4bpjgr4bp.png', prices: { '30ml': 300, '50ml': 400, '100ml': 600 }, discount: 5, rating: 4.4, volume: '100ml' },
-  { id: 4, name: 'Asad', brand: 'Lattafa', category: 'Men / Unisex', image_url: 'https://69e170f2922d70dc1fa0c31b.imgix.net/Gemini_Generated_Image_r4bpjgr4bpjgr4bp.png', prices: { '30ml': 350, '50ml': 450, '100ml': 650 }, discount: 0, rating: 4.7, volume: '100ml' },
-  { id: 5, name: 'Sauvage', brand: 'Dior', category: 'Men / Unisex', image_url: 'https://69e170f2922d70dc1fa0c31b.imgix.net/Gemini_Generated_Image_r4bpjgr4bpjgr4bp.png', prices: { '30ml': 300, '50ml': 400, '100ml': 600 }, discount: 10, rating: 4.8, volume: '100ml' },
-  { id: 6, name: 'Bleu de Chanel', brand: 'Chanel', category: 'Men / Unisex', image_url: 'https://69e170f2922d70dc1fa0c31b.imgix.net/Gemini_Generated_Image_r4bpjgr4bpjgr4bp.png', prices: { '30ml': 300, '50ml': 400, '100ml': 600 }, discount: 10, rating: 4.7, volume: '100ml' },
-  { id: 7, name: 'Acqua di Giò', brand: 'Giorgio Armani', category: 'Men / Unisex', image_url: 'https://69e170f2922d70dc1fa0c31b.imgix.net/Gemini_Generated_Image_r4bpjgr4bpjgr4bp.png', prices: { '30ml': 300, '50ml': 400, '100ml': 600 }, discount: 10, rating: 4.6, volume: '100ml' },
+  { id: 1, name: 'Black XS', brand: 'Paco Rabanne', category: 'Men / Unisex', image_url: 'https://images.unsplash.com/seed/black-xs/600x600?auto=format&fit=crop&w=600&q=80', prices: { '30ml': 300, '50ml': 400, '100ml': 600 }, discount: 10, rating: 4.6, volume: '100ml' },
+  { id: 2, name: 'Black XS L’Exces', brand: 'Paco Rabanne', category: 'Men / Unisex', image_url: 'https://images.unsplash.com/seed/black-xs-lexces/600x600?auto=format&fit=crop&w=600&q=80', prices: { '30ml': 300, '50ml': 400, '100ml': 600 }, discount: 10, rating: 4.5, volume: '100ml' },
+  { id: 3, name: 'Chrome', brand: 'Azzaro', category: 'Men / Unisex', image_url: 'https://images.unsplash.com/seed/chrome-azzaro/600x600?auto=format&fit=crop&w=600&q=80', prices: { '30ml': 300, '50ml': 400, '100ml': 600 }, discount: 5, rating: 4.4, volume: '100ml' },
+  { id: 4, name: 'Asad', brand: 'Lattafa', category: 'Men / Unisex', image_url: 'https://images.unsplash.com/seed/asad-lattafa/600x600?auto=format&fit=crop&w=600&q=80', prices: { '30ml': 350, '50ml': 450, '100ml': 650 }, discount: 0, rating: 4.7, volume: '100ml' },
+  { id: 5, name: 'Sauvage', brand: 'Dior', category: 'Men / Unisex', image_url: 'https://images.unsplash.com/seed/sauvage-dior/600x600?auto=format&fit=crop&w=600&q=80', prices: { '30ml': 300, '50ml': 400, '100ml': 600 }, discount: 10, rating: 4.8, volume: '100ml' },
+  { id: 6, name: 'Bleu de Chanel', brand: 'Chanel', category: 'Men / Unisex', image_url: 'https://images.unsplash.com/seed/bleu-de-chanel/600x600?auto=format&fit=crop&w=600&q=80', prices: { '30ml': 300, '50ml': 400, '100ml': 600 }, discount: 10, rating: 4.7, volume: '100ml' },
+  { id: 7, name: 'Acqua di Giò', brand: 'Giorgio Armani', category: 'Men / Unisex', image_url: 'https://images.unsplash.com/seed/acqua-di-gio/600x600?auto=format&fit=crop&w=600&q=80', prices: { '30ml': 300, '50ml': 400, '100ml': 600 }, discount: 10, rating: 4.6, volume: '100ml' },
   { id: 8, name: 'Hawas', brand: 'Rasasi', category: 'Men / Unisex', image_url: 'https://images.unsplash.com/seed/hawas-rasasi/600x600?auto=format&fit=crop&w=600&q=80', prices: { '30ml': 300, '50ml': 400, '100ml': 600 }, discount: 10, rating: 4.5, volume: '100ml' },
   { id: 9, name: 'One Million', brand: 'Paco Rabanne', category: 'Men / Unisex', image_url: 'https://images.unsplash.com/seed/one-million/600x600?auto=format&fit=crop&w=600&q=80', prices: { '30ml': 300, '50ml': 400, '100ml': 600 }, discount: 5, rating: 4.6, volume: '100ml' },
   { id: 10, name: '212', brand: 'Carolina Herrera', category: 'Men / Unisex', image_url: 'https://images.unsplash.com/seed/212-carolina/600x600?auto=format&fit=crop&w=600&q=80', prices: { '30ml': 300, '50ml': 400, '100ml': 600 }, discount: 10, rating: 4.5, volume: '100ml' },
@@ -77,7 +77,7 @@ let totalValue;
 let submitOrder;
 let orderStatus;
 let customerName;
-let customerEmail;
+let customerAddress;
 let customerPhone;
 let cartCountElement;
 let selectOffer;
@@ -255,12 +255,12 @@ async function submitOrderHandler() {
   const total = subtotal - discountAmount;
   const customer = {
     name: customerName.value.trim(),
-    email: customerEmail.value.trim(),
+    address: customerAddress.value.trim(),
     phone: customerPhone.value.trim(),
   };
 
-  if (!customer.name || !customer.email) {
-    orderStatus.textContent = 'ادخل الاسم والبريد الإلكتروني لإتمام الطلب.';
+  if (!customer.name || !customer.address) {
+    orderStatus.textContent = 'ادخل الاسم والعنوان لإتمام الطلب.';
     orderStatus.className = 'order-status error';
     return;
   }
@@ -277,7 +277,7 @@ async function submitOrderHandler() {
     discount_amount: discountAmount,
     total,
     customer_name: customer.name,
-    customer_email: customer.email,
+    customer_address: customer.address,
     customer_phone: customer.phone || null,
   };
 
@@ -297,7 +297,7 @@ async function submitOrderHandler() {
   }
 
   customerName.value = '';
-  customerEmail.value = '';
+  customerAddress.value = '';
   customerPhone.value = '';
   promoInput.value = '';
   currentDiscount = 0;
@@ -346,7 +346,7 @@ document.addEventListener('DOMContentLoaded', () => {
   submitOrder = document.getElementById('submitOrder');
   orderStatus = document.getElementById('orderStatus');
   customerName = document.getElementById('customerName');
-  customerEmail = document.getElementById('customerEmail');
+  customerAddress = document.getElementById('customerAddress');
   customerPhone = document.getElementById('customerPhone');
   cartCountElement = document.getElementById('cartCount');
   selectOffer = document.getElementById('selectOffer');
