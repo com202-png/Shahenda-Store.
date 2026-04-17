@@ -288,7 +288,7 @@ async function submitOrderHandler() {
       orderStatus.textContent = 'خطأ في حفظ الطلب في قاعدة البيانات. تم حفظ الطلب محلياً فقط.';
       orderStatus.className = 'order-status error';
     } else {
-      orderStatus.textContent = `تم حفظ الطلب في قاعدة البيانات. المبلغ الكلي ${formatPrice(total)}.`;
+      orderStatus.textContent = `تم تقديم الطلب بنجاح سيتم التواصل معك قريبا..شكرا لاختبارك متجرنا. المبلغ الكلي ${formatPrice(total)}.`;
       orderStatus.className = 'order-status success';
     }
   } else {
