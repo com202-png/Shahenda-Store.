@@ -3,14 +3,15 @@ const SUPABASE_KEY = 'sb_publishable_DIHyv13-yCxgBKIC8PYCvQ_394bcWSE';
 const supabaseClient = typeof supabase !== 'undefined' && supabase.createClient ? supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
 
 const sizeOptions = ['30ml', '50ml', '100ml'];
+const DEFAULT_PRODUCT_IMAGE = 'https://69e170f2922d70dc1fa0c31b.imgix.net/Gemini_Generated_Image_r4bpjgr4bpjgr4bp.png';
 
 const products = [
-  { id: 1, name: 'Black XS', brand: 'Paco Rabanne', category: 'Men / Unisex', image_url: 'https://69e170f2922d70dc1fa0c31b.imgix.net/Gemini_Generated_Image_r4bpjgr4bpjgr4bp.png', prices: { '30ml': 300, '50ml': 400, '100ml': 600 }, discount: 10, rating: 4.6, volume: '100ml' },
-  { id: 2, name: 'Black XS L’Exces', brand: 'Paco Rabanne', category: 'Men / Unisex', image_url: 'https://69e170f2922d70dc1fa0c31b.imgix.net/Gemini_Generated_Image_r4bpjgr4bpjgr4bp.png', prices: { '30ml': 300, '50ml': 400, '100ml': 600 }, discount: 10, rating: 4.5, volume: '100ml' },
-  { id: 3, name: 'Chrome', brand: 'Azzaro', category: 'Men / Unisex', image_url: 'https://69e170f2922d70dc1fa0c31b.imgix.net/Gemini_Generated_Image_r4bpjgr4bpjgr4bp.png', prices: { '30ml': 300, '50ml': 400, '100ml': 600 }, discount: 5, rating: 4.4, volume: '100ml' },
-  { id: 4, name: 'Asad', brand: 'Lattafa', category: 'Men / Unisex', image_url: 'https://69e170f2922d70dc1fa0c31b.imgix.net/Gemini_Generated_Image_r4bpjgr4bpjgr4bp.png', prices: { '30ml': 350, '50ml': 450, '100ml': 650 }, discount: 0, rating: 4.7, volume: '100ml' },
-  { id: 5, name: 'Sauvage', brand: 'Dior', category: 'Men / Unisex', image_url: 'https://69e170f2922d70dc1fa0c31b.imgix.net/Gemini_Generated_Image_r4bpjgr4bpjgr4bp.png', prices: { '30ml': 300, '50ml': 400, '100ml': 600 }, discount: 10, rating: 4.8, volume: '100ml' },
-  { id: 6, name: 'Bleu de Chanel', brand: 'Chanel', category: 'Men / Unisex', image_url: 'https://69e170f2922d70dc1fa0c31b.imgix.net/Gemini_Generated_Image_r4bpjgr4bpjgr4bp.png', prices: { '30ml': 300, '50ml': 400, '100ml': 600 }, discount: 10, rating: 4.7, volume: '100ml' },
+  { id: 1, name: 'Black XS', brand: 'Paco Rabanne', category: 'Men / Unisex', image_url: DEFAULT_PRODUCT_IMAGE, prices: { '30ml': 300, '50ml': 400, '100ml': 600 }, discount: 10, rating: 4.6, volume: '100ml' },
+  { id: 2, name: 'Black XS L’Exces', brand: 'Paco Rabanne', category: 'Men / Unisex', image_url: 'https://images.unsplash.com/seed/black-xs-lexces/600x600?auto=format&fit=crop&w=600&q=80', prices: { '30ml': 300, '50ml': 400, '100ml': 600 }, discount: 10, rating: 4.5, volume: '100ml' },
+  { id: 3, name: 'Chrome', brand: 'Azzaro', category: 'Men / Unisex', image_url: 'https://images.unsplash.com/seed/chrome-azzaro/600x600?auto=format&fit=crop&w=600&q=80', prices: { '30ml': 300, '50ml': 400, '100ml': 600 }, discount: 5, rating: 4.4, volume: '100ml' },
+  { id: 4, name: 'Asad', brand: 'Lattafa', category: 'Men / Unisex', image_url: 'https://images.unsplash.com/seed/asad-lattafa/600x600?auto=format&fit=crop&w=600&q=80', prices: { '30ml': 350, '50ml': 450, '100ml': 650 }, discount: 0, rating: 4.7, volume: '100ml' },
+  { id: 5, name: 'Sauvage', brand: 'Dior', category: 'Men / Unisex', image_url: 'https://images.unsplash.com/seed/sauvage-dior/600x600?auto=format&fit=crop&w=600&q=80', prices: { '30ml': 300, '50ml': 400, '100ml': 600 }, discount: 10, rating: 4.8, volume: '100ml' },
+  { id: 6, name: 'Bleu de Chanel', brand: 'Chanel', category: 'Men / Unisex', image_url: 'https://images.unsplash.com/seed/bleu-de-chanel/600x600?auto=format&fit=crop&w=600&q=80', prices: { '30ml': 300, '50ml': 400, '100ml': 600 }, discount: 10, rating: 4.7, volume: '100ml' },
   { id: 7, name: 'Acqua di Giò', brand: 'Giorgio Armani', category: 'Men / Unisex', image_url: 'https://images.unsplash.com/seed/acqua-di-gio/600x600?auto=format&fit=crop&w=600&q=80', prices: { '30ml': 300, '50ml': 400, '100ml': 600 }, discount: 10, rating: 4.6, volume: '100ml' },
   { id: 8, name: 'Hawas', brand: 'Rasasi', category: 'Men / Unisex', image_url: 'https://images.unsplash.com/seed/hawas-rasasi/600x600?auto=format&fit=crop&w=600&q=80', prices: { '30ml': 300, '50ml': 400, '100ml': 600 }, discount: 10, rating: 4.5, volume: '100ml' },
   { id: 9, name: 'One Million', brand: 'Paco Rabanne', category: 'Men / Unisex', image_url: 'https://images.unsplash.com/seed/one-million/600x600?auto=format&fit=crop&w=600&q=80', prices: { '30ml': 300, '50ml': 400, '100ml': 600 }, discount: 5, rating: 4.6, volume: '100ml' },
@@ -89,6 +90,7 @@ let submitCustom;
 let languageToggle;
 
 let selectedProductId = null;
+let selectedOffer = null;
 let currentDiscount = 0;
 let currentPromoCode = '';
 let cart = [];
@@ -106,7 +108,7 @@ function renderProducts() {
     .map((product) => {
       const price = product.prices['100ml'];
       const oldPrice = product.discount ? Math.round(price / (1 - product.discount / 100)) : price + 150;
-      const imageUrl = product.image_url || `https://via.placeholder.com/320x240.png?text=${encodeURIComponent(product.name)}`;
+      const imageUrl = DEFAULT_PRODUCT_IMAGE;
       return `
         <article class="product-card">
           <div class="product-image">
@@ -163,33 +165,61 @@ function addOfferToCart() {
   const selected = Array.from(document.querySelectorAll('.perfume-checkbox:checked')).map((cb) => parseInt(cb.value));
   if (selected.length !== 10) return;
   const selectedPerfumes = selected.map((id) => getProductById(id));
-  cart.push({
+  const offerItem = {
     type: 'box',
     items: selectedPerfumes,
     price: 1500,
     name: 'بوكس 10 عطور مختارة',
-  });
+  };
+  cart.push(offerItem);
   updateCartCount(cart.length);
-  alert('تم إضافة البوكس إلى السلة!');
+  alert('تم إضافة البوكس إلى السلة! يمكنك إتمام الطلب من نموذج الطلب.');
   toggleOfferOptions();
+  showSelectedOffer(offerItem);
 }
 
 function showSelectedProduct(product) {
+  selectedOffer = null;
+  selectedProductId = product.id;
   orderSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
   orderBrand.textContent = product.brand;
   orderName.textContent = `${product.brand} ${product.name}`;
-  const imageUrl = product.image_url || `https://via.placeholder.com/84x84.png?text=${encodeURIComponent(product.name)}`;
+  const imageUrl = DEFAULT_PRODUCT_IMAGE;
   orderProductImage.innerHTML = `<img src="${imageUrl}" alt="${product.name}" loading="lazy" />`;
   sizeSelect.innerHTML = sizeOptions.map((size) => `<option value="${size}">${size}</option>`).join('');
   sizeSelect.value = '100ml';
+  sizeSelect.disabled = false;
   quantityInput.value = 1;
+  quantityInput.disabled = false;
   promoInput.value = '';
   currentDiscount = 0;
   currentPromoCode = '';
   updateSummary();
 }
 
+function showSelectedOffer(offer) {
+  selectedProductId = null;
+  selectedOffer = offer;
+  orderSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  orderBrand.textContent = 'عرض خاص';
+  orderName.textContent = offer.name;
+  const imageUrl = DEFAULT_PRODUCT_IMAGE;
+  orderProductImage.innerHTML = `<img src="${imageUrl}" alt="${offer.name}" loading="lazy" />`;
+  sizeSelect.innerHTML = `<option value="30ml">30ml</option>`;
+  sizeSelect.value = '30ml';
+  sizeSelect.disabled = true;
+  quantityInput.value = 1;
+  quantityInput.disabled = true;
+  promoInput.value = '';
+  currentDiscount = 0;
+  currentPromoCode = '';
+  orderStatus.textContent = 'تم اختيار العرض الخاص. يمكنك إتمام الطلب الآن.';
+  orderStatus.className = 'order-status success';
+  updateSummary();
+}
+
 function selectProduct(id) {
+  selectedOffer = null;
   selectedProductId = id;
   const product = getProductById(id);
   if (!product) return;
@@ -206,6 +236,16 @@ function selectProduct(id) {
 }
 
 function updateSummary() {
+  if (selectedOffer) {
+    const subtotal = selectedOffer.price;
+    const discountAmount = Math.round((subtotal * currentDiscount) / 100);
+    const total = subtotal - discountAmount;
+    subtotalValue.textContent = formatPrice(subtotal);
+    discountValue.textContent = formatPrice(discountAmount);
+    totalValue.textContent = formatPrice(total);
+    return;
+  }
+
   if (!selectedProductId) {
     subtotalValue.textContent = '0 EGP';
     discountValue.textContent = '0 EGP';
@@ -239,20 +279,13 @@ function submitCustomOrder() {
 }
 
 async function submitOrderHandler() {
-  if (!selectedProductId) {
-    orderStatus.textContent = 'اختر منتجاً أولاً.';
+  if (!selectedProductId && !selectedOffer) {
+    orderStatus.textContent = 'اختر منتجاً أو العرض أولاً.';
     orderStatus.className = 'order-status error';
     return;
   }
 
-  const product = getProductById(selectedProductId);
-  const size = sizeSelect.value;
-  const quantity = Math.max(1, Number(quantityInput.value));
-  const unitPrice = product.prices[size] || product.prices['100ml'];
-  const subtotal = unitPrice * quantity;
   const promoCode = promoInput.value.trim().toUpperCase();
-  const discountAmount = promoCode === 'SAVE10' ? Math.round(subtotal * 0.1) : 0;
-  const total = subtotal - discountAmount;
   const customer = {
     name: customerName.value.trim(),
     address: customerAddress.value.trim(),
@@ -265,21 +298,44 @@ async function submitOrderHandler() {
     return;
   }
 
-  const orderPayload = {
-    product_name: product.name,
-    brand: product.brand,
-    size,
-    bottle_type: bottleSelect.value,
-    quantity,
-    unit_price: unitPrice,
-    subtotal,
-    promo_code: promoCode || null,
-    discount_amount: discountAmount,
-    total,
-    customer_name: customer.name,
-    customer_address: customer.address,
-    customer_phone: customer.phone || null,
-  };
+  const orderPayload = {}
+  let subtotal;
+  let discountAmount;
+  let total;
+
+  if (selectedOffer) {
+    subtotal = selectedOffer.price;
+    discountAmount = promoCode === 'SAVE10' ? Math.round(subtotal * 0.1) : 0;
+    total = subtotal - discountAmount;
+    orderPayload.product_name = selectedOffer.name;
+    orderPayload.brand = 'عرض خاص';
+    orderPayload.size = '30ml';
+    orderPayload.bottle_type = bottleSelect.value;
+    orderPayload.quantity = 1;
+    orderPayload.unit_price = selectedOffer.price;
+  } else {
+    const product = getProductById(selectedProductId);
+    const size = sizeSelect.value;
+    const quantity = Math.max(1, Number(quantityInput.value));
+    const unitPrice = product.prices[size] || product.prices['100ml'];
+    subtotal = unitPrice * quantity;
+    discountAmount = promoCode === 'SAVE10' ? Math.round(subtotal * 0.1) : 0;
+    total = subtotal - discountAmount;
+    orderPayload.product_name = product.name;
+    orderPayload.brand = product.brand;
+    orderPayload.size = size;
+    orderPayload.bottle_type = bottleSelect.value;
+    orderPayload.quantity = quantity;
+    orderPayload.unit_price = unitPrice;
+  }
+
+  orderPayload.subtotal = subtotal;
+  orderPayload.promo_code = promoCode || null;
+  orderPayload.discount_amount = discountAmount;
+  orderPayload.total = total;
+  orderPayload.customer_name = customer.name;
+  orderPayload.customer_address = customer.address;
+  orderPayload.customer_phone = customer.phone || null;
 
   if (supabaseClient) {
     const { error } = await supabaseClient.from('orders').insert([orderPayload]);
@@ -288,7 +344,7 @@ async function submitOrderHandler() {
       orderStatus.textContent = 'خطأ في حفظ الطلب في قاعدة البيانات. تم حفظ الطلب محلياً فقط.';
       orderStatus.className = 'order-status error';
     } else {
-      orderStatus.textContent = `تم تقديم الطلب بنجاح سيتم التواصل معك قريبا..شكرا لاختبارك متجرنا. المبلغ الكلي ${formatPrice(total)}.`;
+      orderStatus.textContent = `تم حفظ الطلب في قاعدة البيانات. المبلغ الكلي ${formatPrice(total)}. يمكنك تتبع الطلبات من لوحة التحكم.`;
       orderStatus.className = 'order-status success';
     }
   } else {
