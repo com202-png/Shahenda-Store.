@@ -21,12 +21,34 @@
       </div>
       <div class="app-actions">
         <button class="icon-button language-toggle" id="languageToggle" aria-label="Toggle Language">EN</button>
-        <button class="icon-button" onclick="window.location.href='admin.html'" aria-label="لوحة التحكم">⚙️</button>
         <button class="icon-button cart-button" aria-label="Cart">🛒<span id="cartCount">0</span></button>
       </div>
     </header>
 
     <main class="products-section">
+      <section class="hero-section">
+        <div class="hero-copy">
+          <span class="hero-overline">Premium Perfumes</span>
+          <h1>عطور فاخرة، تسوق سهل، ثبات وفوحان.</h1>
+          <p> اكتشف اقوى العطور الفاخره بحجم من اول 30 مل وباقل الاسعار </p>
+          <div class="hero-actions">
+            <a href="#productGrid" class="button button-primary">تسوق الآن</a>
+            <a href="#orderSection" class="button button-secondary">اطلب عبر واتساب</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="perfume-frame">
+            <div class="perfume-bottle">
+              <div class="perfume-cap"></div>
+              <div class="perfume-body">
+                <span>SHAHENDA</span>
+                <small>STORE</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <div class="main-layout">
         <section class="offers-section">
           <div class="offer-card premium">
@@ -43,7 +65,7 @@
 
         <section class="customize-section">
           <div class="customize-card premium">
-            <h3 data-ar="كوستومايز عطرك الخاص" data-en="Customize Your Own Perfume">كوستومايز عطرك الخاص</h3>
+            <h3 data-ar="Customize Your Own Perfume" data-en="Customize Your Own Perfume">Customize Your Own Perfume</h3>
             <p data-ar="اكتب وصف العطر الذي تريده، وسنقوم بتصميمه خصيصاً لك." data-en="Describe your desired perfume, and we will design it exclusively for you.">اكتب وصف العطر الذي تريده، وسنقوم بتصميمه خصيصاً لك.</p>
             <p class="price-note">Price will be determined after the order.</p>
             <textarea id="customDescription" placeholder="اكتب وصف العطر المطلوب، مثل الروائح، القوة، التركيبة، إلخ." data-placeholder-en="Describe your desired perfume..."></textarea>
