@@ -955,3 +955,50 @@ body {
 .bottom-nav .nav-item span:first-child {
   font-size: 1.1rem;
 }
+
+/* Admin Panel Styles */
+.admin-panel {
+  display: grid;
+  gap: 18px;
+  background: #ffffff;
+  border-radius: 28px;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
+  padding: 24px;
+}
+
+.admin-controls {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.saved-orders-list {
+  display: grid;
+  gap: 12px;
+}
+
+.saved-order-item {
+  background: #f8f5ee;
+  border-radius: 18px;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  display: grid;
+  gap: 8px;
+}
+
+.saved-order-item h4 {
+  margin: 0;
+  color: #111827;
+  font-size: 1.1rem;
+}
+
+.saved-order-item p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.order-info {
+  display: grid;
+  gap: 4px;
+}
