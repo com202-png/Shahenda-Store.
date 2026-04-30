@@ -6,7 +6,7 @@ const SB_URL = 'https://hxjvrsqywrnqkmanmifj.supabase.co';
 const SB_KEY = 'sb_publishable_fiU1vnioMqPRF1yRTBdBmg_etysUeLc';
 const sb = typeof supabase !== 'undefined' ? supabase.createClient(SB_URL, SB_KEY) : null;
 
-const WA_NUMBER = '20113156642';
+const WA_NUMBER = '201131356642';
 
 /* ── State ── */
 let allProducts = [];
