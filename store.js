@@ -2,8 +2,8 @@
    SHAHENDA STORE — store.js
    Handles: products display, drawer, cart, orders
 ═══════════════════════════════════════ */
-const SB_URL = 'https://aweuqtiqfxjoflvvturi.supabase.co';
-const SB_KEY = 'sb_publishable_DIHyv13-yCxgBKIC8PYCvQ_394bcWSE';
+const SB_URL = 'https://hxjvrsqywrnqkmanmifj.supabase.co';
+const SB_KEY = 'sb_publishable_fiU1vnioMqPRF1yRTBdBmg_etysUeLc';
 const sb = typeof supabase !== 'undefined' ? supabase.createClient(SB_URL, SB_KEY) : null;
 
 const WA_NUMBER = '20113156642';
