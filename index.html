@@ -436,6 +436,50 @@ body{background:var(--cream);color:var(--text);min-height:100vh;-webkit-font-smo
 .wa-float:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(37,211,102,.45)}
 .wa-icon{width:24px;height:24px;background:rgba(255,255,255,.2);border-radius:50%;display:grid;place-items:center}
 
+/* ── OFFERS SECTION ── */
+.offers-section{max-width:1200px;margin:0 auto;padding:0 24px 48px}
+.offers-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.offer-card{
+  background:linear-gradient(135deg,var(--cream-d),var(--white));
+  border:1.5px solid var(--border-d);border-radius:var(--r-xl);
+  padding:24px;position:relative;overflow:hidden;
+  box-shadow:var(--shadow);transition:transform var(--tr),box-shadow var(--tr);
+  cursor:pointer;
+}
+.offer-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-hov)}
+.offer-card::before{
+  content:'';position:absolute;top:-40px;right:-40px;
+  width:140px;height:140px;
+  background:radial-gradient(circle,rgba(184,134,11,.12),transparent 70%);
+  pointer-events:none;
+}
+.offer-badge-tag{
+  display:inline-block;background:var(--gold);color:var(--white);
+  padding:4px 12px;border-radius:var(--r-pill);font-size:.72rem;
+  font-weight:700;margin-bottom:12px;letter-spacing:.04em;
+}
+.offer-card h3{
+  font-family:'Cormorant Garamond',serif;font-size:1.3rem;
+  font-weight:700;color:var(--text);margin-bottom:8px;
+}
+.offer-card p{font-size:.88rem;color:var(--text-2);line-height:1.6;margin-bottom:16px}
+.offer-prices{display:flex;align-items:baseline;gap:10px;margin-bottom:16px}
+.offer-price-new{font-size:1.4rem;font-weight:700;color:var(--gold-dk)}
+.offer-price-old{font-size:.9rem;color:var(--text-3);text-decoration:line-through}
+.offer-saving{
+  font-size:.75rem;font-weight:700;color:var(--green);
+  background:rgba(45,106,79,.08);border:1px solid rgba(45,106,79,.15);
+  padding:3px 9px;border-radius:var(--r-pill);
+}
+.offer-btn{
+  width:100%;padding:12px;border-radius:var(--r-pill);border:none;
+  background:var(--text);color:var(--white);
+  font-family:inherit;font-size:.9rem;font-weight:700;
+  cursor:pointer;transition:all var(--tr);
+}
+.offer-btn:hover{background:var(--gold-dk)}
+.offers-empty{display:none}
+
 /* ── FOOTER ── */
 footer{background:var(--text);color:rgba(255,255,255,.7);padding:28px 24px;margin-top:64px}
 .footer-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
@@ -523,6 +567,17 @@ footer{background:var(--text);color:rgba(255,255,255,.7);padding:28px 24px;margi
     <span class="trust-item"><span class="trust-icon">🔄</span> ضمان جودة أو استرداد</span>
     <span class="trust-item"><span class="trust-icon">📦</span> تغليف فاخر</span>
   </div>
+</div>
+
+<!-- OFFERS SECTION -->
+<div class="offers-section" id="offersSection" style="display:none">
+  <div class="section-head" style="margin-bottom:20px">
+    <div>
+      <h2 class="section-title">🎁 العروض الخاصة</h2>
+      <p class="section-sub">عروض محدودة — اطلب دلوقتي</p>
+    </div>
+  </div>
+  <div class="offers-grid" id="offersGrid"></div>
 </div>
 
 <!-- SHOP SECTION -->
