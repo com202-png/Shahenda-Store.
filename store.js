@@ -33,6 +33,50 @@ function toast(msg, type='', dur=3200) {
 const EGP = v => `${Number(v).toLocaleString('ar-EG')} جنيه`;
 
 /* ══════════════════════════
+   LOAD & RENDER OFFERS
+══════════════════════════ */
+function loadOffers() {
+  const saved = localStorage.getItem('shahenda_offers');
+  let offers = [];
+  try { offers = saved ? JSON.parse(saved) : []; } catch(e) {}
+  const activeOffers = offers.filter(o => o.active);
+  const section = document.getElementById('offersSection');
+  const grid    = document.getElementById('offersGrid');
+
+  if (!activeOffers.length) { section.style.display = 'none'; return; }
+
+  section.style.display = 'block';
+  grid.innerHTML = activeOffers.map(o => {
+    const saving = o.oldPrice ? o.oldPrice - o.price : 0;
+    return `
+      <div class="offer-card" onclick="orderOffer(${JSON.stringify(o).replace(/"/g,'&quot;')})">
+        <span class="offer-badge-tag">🔥 عرض خاص</span>
+        <h3>${o.name}</h3>
+        <p>${o.desc || ''}</p>
+        <div class="offer-prices">
+          <span class="offer-price-new">${EGP(o.price)}</span>
+          ${o.oldPrice ? `<span class="offer-price-old">${EGP(o.oldPrice)}</span>` : ''}
+          ${saving > 0 ? `<span class="offer-saving">وفّر ${EGP(saving)}</span>` : ''}
+        </div>
+        <button class="offer-btn">اطلب العرض دلوقتي</button>
+      </div>`;
+  }).join('');
+}
+
+window.orderOffer = function(offer) {
+  // Open WhatsApp directly for offers
+  const msg = encodeURIComponent(
+    `🎁 طلب عرض خاص - Shahenda Store\n\n` +
+    `العرض: ${offer.name}\n` +
+    `السعر: ${offer.price} جنيه\n` +
+    `${offer.desc ? `التفاصيل: ${offer.desc}\n` : ''}` +
+    `💵 الدفع: كاش عند الاستلام\n\n` +
+    `من فضلك أرسل:\n- اسمك\n- رقم هاتفك\n- عنوانك`
+  );
+  window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`, '_blank');
+};
+
+/* ══════════════════════════
    LOAD PRODUCTS
 ══════════════════════════ */
 async function loadProducts() {
@@ -406,6 +450,7 @@ document.getElementById('checkoutBtn').addEventListener('click', () => {
    INIT
 ══════════════════════════ */
 document.addEventListener('DOMContentLoaded', () => {
+  loadOffers();
   loadProducts();
   loadPromos();
   updateCartBadge();
