@@ -3,37 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shahenda Store | متجر عطور</title>
+  <meta name="description" content="Shahenda Store - متجر عطور فاخرة | أفضل العطور بأسعار مميزة" />
+  <title>Shahenda Store | متجر عطور فاخرة</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+
+  <!-- Toast Container -->
+  <div id="toastContainer"></div>
+
   <div class="page-shell">
+
+    <!-- APP BAR -->
     <header class="app-bar">
       <div class="brand-block">
         <span class="brand-mark">S</span>
         <div class="brand-copy">
           <span class="brand-name">Shahenda Store</span>
-          <span class="brand-tag" data-en="Address">العنوان</span>
+          <span class="brand-tag" data-en="Luxury Perfumes">عطور فاخرة</span>
         </div>
       </div>
       <div class="app-actions">
         <button class="icon-button language-toggle" id="languageToggle" aria-label="Toggle Language">EN</button>
-        <button class="icon-button cart-button" aria-label="Cart">🛒<span id="cartCount">0</span></button>
+        <button class="icon-button cart-button" id="cartButton" aria-label="Cart">
+          🛒<span id="cartCount">0</span>
+        </button>
       </div>
     </header>
 
-    <main class="products-section">
+    <main>
+
+      <!-- HERO -->
       <section class="hero-section">
         <div class="hero-copy">
-          <span class="hero-overline">Premium Perfumes</span>
-          <h1>عطور فاخرة، تسوق سهل، ثبات وفوحان.</h1>
-          <p> اكتشف اقوى العطور الفاخره بحجم من اول 30 مل وباقل الاسعار </p>
+          <span class="hero-overline" data-en="Premium Collection">مجموعة مميزة</span>
+          <h1 data-en="Luxury Scents, Easy Shopping">عطور فاخرة، تسوّق سهل، ثبات وفوحان</h1>
+          <p data-en="Discover the finest luxury perfumes starting from 30ml at the best prices">اكتشف أقوى العطور الفاخرة بحجم من 30 مل وبأقل الأسعار</p>
           <div class="hero-actions">
-            <a href="#productGrid" class="button button-primary">تسوق الآن</a>
-            <a href="#orderSection" class="button button-secondary">اطلب عبر واتساب</a>
+            <a href="#productGrid" class="button button-primary" data-en="Shop Now">تسوق الآن</a>
+            <a href="#orderSection" class="button button-secondary" data-en="Order via WhatsApp">اطلب عبر واتساب</a>
           </div>
         </div>
         <div class="hero-visual">
@@ -49,110 +60,158 @@
         </div>
       </section>
 
-      <div class="main-layout">
-        <section class="offers-section">
-          <div class="offer-card premium">
-            <h3 data-ar="عرض خاص: بوكس 10 قطع 30 مل" data-en="Special Offer: Box of 10 Pieces 30ml">عرض خاص: بوكس 10 قطع 30 مل</h3>
-            <p data-ar="احصل على بوكس يحتوي على 10 قطع عطر 30 مل بسعر 1500 جنيه بدلاً من 3000 جنيه!" data-en="Get a box with 10 perfume pieces of 30ml for 1500 EGP instead of 3000 EGP!">احصل على بوكس يحتوي على 10 قطع عطر 30 مل بسعر 1500 جنيه بدلاً من 3000 جنيه!</p>
-            <button id="selectOffer" class="button button-primary" data-ar="اختر العرض" data-en="Choose Offer">اختر العرض</button>
-          </div>
-          <div id="offerOptions" class="offer-options" style="display: none;">
-            <h4 data-ar="اختر 10 عطور من القائمة أدناه:" data-en="Select 10 perfumes from the list below:">اختر 10 عطور من القائمة أدناه:</h4>
-            <div id="perfumeSelector" class="perfume-selector"></div>
-            <button id="addToCartOffer" class="button button-primary" data-ar="أضف إلى السلة" data-en="Add to Cart">أضف إلى السلة</button>
-          </div>
-        </section>
-
-        <section class="customize-section">
-          <div class="customize-card premium">
-            <h3 data-ar="Customize Your Own Perfume" data-en="Customize Your Own Perfume">Customize Your Own Perfume</h3>
-            <p data-ar="اكتب وصف العطر الذي تريده، وسنقوم بتصميمه خصيصاً لك." data-en="Describe your desired perfume, and we will design it exclusively for you.">اكتب وصف العطر الذي تريده، وسنقوم بتصميمه خصيصاً لك.</p>
-            <p class="price-note">Price will be determined after the order.</p>
-            <textarea id="customDescription" placeholder="اكتب وصف العطر المطلوب، مثل الروائح، القوة، التركيبة، إلخ." data-placeholder-en="Describe your desired perfume..."></textarea>
-            <button id="submitCustom" class="button button-primary" data-ar="إرسال الطلب" data-en="Submit Order">إرسال الطلب</button>
-          </div>
-        </section>
-
-        <div class="section-header">
-          <h2>تسوّق العطور المختارة</h2>
-          <p>أفضل العروض وأشهر الماركات في مكان واحد.</p>
+      <!-- OFFERS -->
+      <section class="offers-section">
+        <div class="offer-card premium">
+          <h3 data-en="Special Offer: Box of 10 Pieces 30ml">🎁 عرض خاص: بوكس 10 قطع 30 مل</h3>
+          <p data-en="Get a box of 10 perfume pieces 30ml for 1500 EGP instead of 3000 EGP!">احصل على بوكس يحتوي على 10 قطع عطر 30 مل بسعر 1500 جنيه بدلاً من 3000 جنيه!</p>
+          <button id="selectOffer" class="button button-primary" data-en="Choose Offer">اختر العرض</button>
         </div>
-        <div class="product-grid" id="productGrid"></div>
+        <div id="offerOptions" class="offer-options" style="display: none;">
+          <h4 data-en="Select 10 perfumes from the list below:">اختر 10 عطور من القائمة أدناه:</h4>
+          <div id="perfumeSelector" class="perfume-selector"></div>
+          <button id="addToCartOffer" class="button button-primary" data-en="Add to Cart">أضف إلى السلة</button>
+        </div>
+      </section>
 
-        <section class="order-section" id="orderSection">
-          <div class="section-heading">
-            <h3 data-ar="تفاصيل الطلب" data-en="Order Details">تفاصيل الطلب</h3>
-            <p data-ar="اختر الحجم، نوع العبوة، الكمية، وأرسل الطلب مباشرة." data-en="Choose size, bottle type, quantity, and submit your order.">اختر الحجم، نوع العبوة، الكمية، وأرسل الطلب مباشرة.</p>
-          </div>
+      <!-- CUSTOMIZE -->
+      <section class="customize-section">
+        <div class="customize-card">
+          <h3 data-en="Customize Your Own Perfume">✨ صمّم عطرك الخاص</h3>
+          <p data-en="Describe your desired perfume and we will design it exclusively for you.">اكتب وصف العطر الذي تريده، وسنقوم بتصميمه خصيصاً لك.</p>
+          <p class="price-note" data-en="Price will be determined after the order.">* السعر يُحدد بعد استلام الطلب</p>
+          <textarea id="customDescription" placeholder="اكتب وصف العطر المطلوب، مثل الروائح، القوة، التركيبة، إلخ." data-placeholder-en="Describe your desired perfume (scents, strength, composition, etc.)"></textarea>
+          <button id="submitCustom" class="button button-primary" data-en="Submit Order">إرسال الطلب</button>
+        </div>
+      </section>
 
-          <div class="order-panel" id="orderPanel">
-            <div class="order-top">
-              <div class="order-image" id="orderProductImage">ع</div>
-              <div class="order-info">
-                <p class="order-brand" id="orderBrand" data-ar-default="اختر منتج" data-en-default="Choose a product">اختر منتج</p>
-                <h3 id="orderName" data-ar-default="لم يتم اختيار أي منتج بعد" data-en-default="No product selected">لم يتم اختيار أي منتج بعد</h3>
-              </div>
-            </div>
-
-            <div class="order-fields">
-              <label data-ar="الحجم" data-en="Size">
-                الحجم
-                <select id="sizeSelect"></select>
-              </label>
-              <label data-ar="نوع العبوة" data-en="Bottle Type">
-                نوع العبوة
-                <select id="bottleSelect">
-                  <option value="Automatic" data-en="Automatic">Automatic Bottle</option>
-                  <option value="Refill" data-en="Refill">Refill</option>
-                </select>
-              </label>
-              <label data-ar="الكمية" data-en="Quantity">
-                الكمية
-                <input id="quantityInput" type="number" min="1" value="1" />
-              </label>
-              <label data-ar="كود الخصم" data-en="Promo Code">
-                كود الخصم
-                <input id="promoInput" type="text" placeholder="أدخل الكود" data-placeholder-en="Enter code" />
-              </label>
-            </div>
-
-            <div class="summary-card">
-              <div class="summary-row"><span data-ar="السعر" data-en="Price">السعر</span><span id="subtotalValue">0 EGP</span></div>
-              <div class="summary-row"><span data-ar="الخصم" data-en="Discount">الخصم</span><span id="discountValue">0 EGP</span></div>
-              <div class="summary-row total-row"><span data-ar="الإجمالي" data-en="Total">الإجمالي</span><span id="totalValue">0 EGP</span></div>
-            </div>
-
-            <div class="customer-fields">
-              <label data-ar="الاسم الكامل" data-en="Full Name">
-                الاسم الكامل
-                <input id="customerName" type="text" placeholder="الاسم" data-placeholder-en="Your name" />
-              </label>
-              <label data-ar="العنوان بالتفصيل" data-en="Detailed Address">
-                العنوان بالتفصيل
-                <textarea id="customerAddress" placeholder="أدخل عنوانك بالتفصيل" data-placeholder-en="Enter your detailed address"></textarea>
-              </label>
-              <label data-ar="رقم الهاتف" data-en="Phone">
-                رقم الهاتف
-                <input id="customerPhone" type="tel" placeholder="0100xxxxxxx" data-placeholder-en="+201xxxxxxxxx" />
-              </label>
-            </div>
-
-            <button id="submitOrder" class="button button-primary" data-ar="تأكيد الطلب" data-en="Confirm Order">تأكيد الطلب</button>
-            <div id="orderStatus" class="order-status"></div>
-          </div>
-        </section>
+      <!-- PRODUCT SECTION -->
+      <div class="section-header">
+        <h2 data-en="Shop Premium Perfumes">تسوّق العطور المختارة</h2>
+        <p data-en="Best deals and top brands in one place.">أفضل العروض وأشهر الماركات في مكان واحد.</p>
       </div>
-    </main>
 
-    <a class="whatsapp-float" href="https://wa.me/20113156642" target="_blank" rel="noopener" aria-label="WhatsApp Chat">
-      <span class="whatsapp-icon">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20.52 3.48C18.22 1.18 15.19 0 12 0 5.37 0 0 5.37 0 12c0 2.12.57 4.19 1.65 5.99L0 24l5.11-1.68A11.92 11.92 0 0012 24c6.63 0 12-5.37 12-12 0-3.19-1.18-6.22-3.48-8.52zM12 22.06c-1.99 0-3.86-.56-5.49-1.52l-.39-.24-3.03 1 1.01-3.12-.26-.4A9.92 9.92 0 012.06 12 9.94 9.94 0 0112 2.06c2.66 0 5.17 1.04 7.06 2.94A9.94 9.94 0 0121.94 12c0 2.66-1.04 5.17-2.94 7.06A9.93 9.93 0 0112 22.06zm5.09-7.34l-1.31-.38c-.17-.05-.36-.05-.53.02-.17.07-.31.2-.4.36l-.32.55a.998.998 0 01-1.11.46 7.52 7.52 0 01-2.24-.86 8.09 8.09 0 01-2.8-2.84 7.39 7.39 0 01-.81-1.96.997.997 0 01.46-1.06l.41-.25c.17-.1.37-.12.57-.07l1.7.44c.26.07.53-.01.73-.2l.96-.95c.38-.38.38-1.01 0-1.39l-.89-.9a1.004 1.004 0 00-1.3-.09l-.68.56a3.064 3.064 0 00-1.04 2.52c.05.63.28 1.24.66 1.78.68 1.01 1.62 1.86 2.7 2.44.95.52 1.26.59 1.75.44l.57-.19c.3-.1.62-.05.87.12l1.04.74c.43.3.95.23 1.29-.16.34-.39.39-.98.13-1.42l-.74-1.12a.988.988 0 00-.83-.45z" fill="#25D366"/>
-        </svg>
-      </span>
-      <span>واتساب</span>
-    </a>
+      <!-- SEARCH + FILTER -->
+      <div class="search-filter-bar">
+        <div class="search-wrapper">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="searchInput" placeholder="ابحث عن عطر..." data-placeholder-en="Search for a perfume..." />
+        </div>
+        <div class="filter-tabs" id="filterTabs">
+          <button class="filter-tab active" data-filter="all" data-en="All">الكل</button>
+          <button class="filter-tab" data-filter="Men / Unisex" data-en="Men / Unisex">رجالي / يونيسكس</button>
+          <button class="filter-tab" data-filter="Women" data-en="Women">نسائي</button>
+          <button class="filter-tab" data-filter="Musk / Oud / Special" data-en="Musk / Oud">مسك / عود / خاص</button>
+        </div>
+      </div>
+
+      <div class="product-grid" id="productGrid"></div>
+
+      <!-- ORDER SECTION -->
+      <section class="order-section" id="orderSection">
+        <div class="section-heading">
+          <h3 data-en="Order Details">تفاصيل الطلب</h3>
+          <p data-en="Choose size, bottle type, quantity, and submit your order directly.">اختر الحجم، نوع العبوة، الكمية، وأرسل الطلب مباشرة.</p>
+        </div>
+
+        <div class="order-panel" id="orderPanel">
+          <div class="order-top">
+            <div class="order-image" id="orderProductImage">🌸</div>
+            <div class="order-info">
+              <p class="order-brand" id="orderBrand" data-en-default="Choose a product">اختر منتجاً</p>
+              <h3 id="orderName" data-en-default="No product selected yet">لم يتم اختيار أي منتج بعد</h3>
+            </div>
+          </div>
+
+          <div class="order-fields">
+            <label data-en="Size">
+              الحجم
+              <select id="sizeSelect"></select>
+            </label>
+            <label data-en="Bottle Type">
+              نوع العبوة
+              <select id="bottleSelect">
+                <option value="Automatic">Automatic Bottle</option>
+                <option value="Refill">Refill</option>
+              </select>
+            </label>
+            <label data-en="Quantity">
+              الكمية
+              <input id="quantityInput" type="number" min="1" value="1" />
+            </label>
+            <label data-en="Promo Code">
+              كود الخصم
+              <input id="promoInput" type="text" placeholder="أدخل الكود" data-placeholder-en="Enter promo code" />
+            </label>
+          </div>
+
+          <div class="summary-card">
+            <div class="summary-row">
+              <span data-en="Price">السعر</span>
+              <span id="subtotalValue">0 EGP</span>
+            </div>
+            <div class="summary-row">
+              <span data-en="Discount">الخصم</span>
+              <span id="discountValue">0 EGP</span>
+            </div>
+            <div class="summary-row total-row">
+              <span data-en="Total">الإجمالي</span>
+              <span id="totalValue">0 EGP</span>
+            </div>
+          </div>
+
+          <div class="customer-fields">
+            <label data-en="Full Name">
+              الاسم الكامل
+              <input id="customerName" type="text" placeholder="اسمك الكامل" data-placeholder-en="Your full name" />
+            </label>
+            <label data-en="Detailed Address">
+              العنوان بالتفصيل
+              <textarea id="customerAddress" placeholder="أدخل عنوانك بالتفصيل (المحافظة، المدينة، الشارع)" data-placeholder-en="Enter your detailed address"></textarea>
+            </label>
+            <label data-en="Phone Number">
+              رقم الهاتف
+              <input id="customerPhone" type="tel" placeholder="0100xxxxxxx" />
+            </label>
+          </div>
+
+          <button id="submitOrder" class="button button-primary" style="width:100%;border-radius:18px;" data-en="Confirm Order">✓ تأكيد الطلب</button>
+          <div id="orderStatus" class="order-status"></div>
+        </div>
+      </section>
+
+    </main>
   </div>
+
+  <!-- WhatsApp Float -->
+  <a class="whatsapp-float" href="https://wa.me/20113156642" target="_blank" rel="noopener" aria-label="WhatsApp Chat">
+    <span class="whatsapp-icon">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20.52 3.48C18.22 1.18 15.19 0 12 0 5.37 0 0 5.37 0 12c0 2.12.57 4.19 1.65 5.99L0 24l5.11-1.68A11.92 11.92 0 0012 24c6.63 0 12-5.37 12-12 0-3.19-1.18-6.22-3.48-8.52zM12 22.06c-1.99 0-3.86-.56-5.49-1.52l-.39-.24-3.03 1 1.01-3.12-.26-.4A9.92 9.92 0 012.06 12 9.94 9.94 0 0112 2.06c2.66 0 5.17 1.04 7.06 2.94A9.94 9.94 0 0121.94 12c0 2.66-1.04 5.17-2.94 7.06A9.93 9.93 0 0112 22.06zm5.09-7.34l-1.31-.38c-.17-.05-.36-.05-.53.02-.17.07-.31.2-.4.36l-.32.55a.998.998 0 01-1.11.46 7.52 7.52 0 01-2.24-.86 8.09 8.09 0 01-2.8-2.84 7.39 7.39 0 01-.81-1.96.997.997 0 01.46-1.06l.41-.25c.17-.1.37-.12.57-.07l1.7.44c.26.07.53-.01.73-.2l.96-.95c.38-.38.38-1.01 0-1.39l-.89-.9a1.004 1.004 0 00-1.3-.09l-.68.56a3.064 3.064 0 00-1.04 2.52c.05.63.28 1.24.66 1.78.68 1.01 1.62 1.86 2.7 2.44.95.52 1.26.59 1.75.44l.57-.19c.3-.1.62-.05.87.12l1.04.74c.43.3.95.23 1.29-.16.34-.39.39-.98.13-1.42l-.74-1.12a.988.988 0 00-.83-.45z" fill="white"/>
+      </svg>
+    </span>
+    <span data-en="WhatsApp">واتساب</span>
+  </a>
+
+  <!-- Bottom Nav -->
+  <nav class="bottom-nav">
+    <button class="nav-item active" onclick="scrollToTop()">
+      <span>🏠</span>
+      <span data-en="Home">الرئيسية</span>
+    </button>
+    <button class="nav-item" onclick="scrollTo('#productGrid')">
+      <span>🛍️</span>
+      <span data-en="Shop">المتجر</span>
+    </button>
+    <button class="nav-item" onclick="scrollTo('#orderSection')">
+      <span>📦</span>
+      <span data-en="Order">الطلب</span>
+    </button>
+    <a class="nav-item" href="https://wa.me/20113156642" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">
+      <span>💬</span>
+      <span data-en="Chat">تواصل</span>
+    </a>
+  </nav>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js" defer></script>
   <script src="script.js" defer></script>
